@@ -2,7 +2,8 @@
 collection of deno scripts
 
 ## slack notification
-`deno run -A https://github.com/xcliu-ca-ibm/deno-scripts/blob/main/slack-notification.js`
+### execution
+> `deno run -A https://raw.githubusercontent.com/xcliu-ca-ibm/deno-scripts/main/slack_notification.js`
 ### send a message to slack channel
 ### environments
 > - SLACK_TOKEN
