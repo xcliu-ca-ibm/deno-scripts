@@ -10,4 +10,4 @@ const slackbot = new Slackbot(token)
 const channel = Deno.env.get("SLACK_CHANNEL") || "#cicd-fvt-reports"
 const message = Deno.env.get("SLACK_MESSAGE") || "*you can specify message via environment variable SLACK_MESSAGE*"
 
-await slackbot.sendMessage(channel, message);
+await slackbot.sendMessage(`${channel}`, `${message}`);
