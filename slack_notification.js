@@ -16,10 +16,10 @@ const CATALOG_TAG = Deno.env.get("CATALOG_TAG")
 const DATESTAMP = Deno.env.get("DATESTAMP")
 if (CATALOG_IMAGE === "ibm-common-service-catalog") {
 	message = `*A new catalog build for BedRock has been promoted:*
-- \`hyc-cloud-private-daily-docker-local.artifactory.swg-devops.com/ibmcom/ibm-common-service-catalog:${CATALOG_TAG}\``
+- \`hyc-cloud-private-daily-docker-local.artifactory.swg-devops.com/ibmcom/${CATALOG_IMAGE}:${CATALOG_TAG}\``
 	if (DATESTAMP) {
 		message += `
-- \`hyc-cloud-private-daily-docker-local.artifactory.swg-devops.com/ibmcom/ibm-common-service-catalog:${DATESTAMP}\`
+- \`hyc-cloud-private-daily-docker-local.artifactory.swg-devops.com/ibmcom/${CATALOG_IMAGE}:${DATESTAMP}\`
 `
 	}
 }
