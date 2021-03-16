@@ -22,6 +22,11 @@ if (CATALOG_IMAGE === "ibm-common-service-catalog") {
 - \`hyc-cloud-private-daily-docker-local.artifactory.swg-devops.com/ibmcom/${CATALOG_IMAGE}:${DATESTAMP}\`
 `
 	}
+	if ((CATALOG_TAG === "3.7" || CATALOG_TAG === "3.6") && DATESTAMP) {
+		message += `
+- \`hyc-cloud-private-daily-docker-local.artifactory.swg-devops.com/ibmcom/${CATALOG_IMAGE}:${CATALOG_TAG}-${DATESTAMP}\`
+`
+	}
 }
 
 await slackbot.sendMessage(`${channel}`, `${message}`);
