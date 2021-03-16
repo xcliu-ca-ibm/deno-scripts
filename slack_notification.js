@@ -24,7 +24,7 @@ if (CATALOG_IMAGE === "ibm-common-service-catalog") {
 	}
 	if ((CATALOG_TAG === "3.7" || CATALOG_TAG === "3.6") && DATESTAMP) {
 		message += `
-- \`hyc-cloud-private-daily-docker-local.artifactory.swg-devops.com/ibmcom/${CATALOG_IMAGE}:${CATALOG_TAG}-${DATESTAMP}\`
+- \`hyc-cloud-private-daily-docker-local.artifactory.swg-devops.com/ibmcom/${CATALOG_IMAGE}:${DATESTAMP}\`
 `
 	}
 }
