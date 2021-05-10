@@ -11,6 +11,7 @@ const channel = Deno.env.get("SLACK_CHANNEL") || "#cicd-fvt-reports"
 let message = Deno.env.get("SLACK_MESSAGE") || "*you can specify message via environment variable SLACK_MESSAGE*"
 
 // specific for catalog build notification
+const CATALOG_DIGEST = Deno.env.get("CATALOG_DIGEST")
 const CATALOG_IMAGE = Deno.env.get("CATALOG_IMAGE")
 const CATALOG_TAG = Deno.env.get("CATALOG_TAG") || "latest"
 const DATESTAMP = Deno.env.get("DATESTAMP")
@@ -25,6 +26,12 @@ if (CATALOG_IMAGE === "ibm-common-service-catalog") {
 	if ((CATALOG_TAG === "3.7" || CATALOG_TAG === "3.6") && DATESTAMP) {
 		message += `
 - \`hyc-cloud-private-daily-docker-local.artifactory.swg-devops.com/ibmcom/${CATALOG_IMAGE}:${DATESTAMP}\`
+`
+	}
+	if (CATALOG_DIGEST) {
+		message += `
+
+Catalog digest: \`${CATALOG_DIGEST}\`
 `
 	}
 }
