@@ -35,9 +35,19 @@ if (CATALOG_IMAGE === "ibm-common-service-catalog") {
 		message += `
 
 Catalog digest: \`${CATALOG_DIGEST}\`
-ppc64le digest: \`${PPC_DIGEST}\`
-amd64 digest: \`${AMD_DIGEST}\`
+`
+	}
+	if (PPC_DIGEST) {
+		message += `ppc64le digest: \`${PPC_DIGEST}\`
+`
+	}
+	if (AMD_DIGEST) {
+		message += `amd64 digest: \`${AMD_DIGEST}\`
 s390x digest: \`${S390_DIGEST}\`
+`
+	}
+	if (S390_DIGEST) {
+		message += `s390x digest: \`${S390_DIGEST}\`
 `
 	}
 }
