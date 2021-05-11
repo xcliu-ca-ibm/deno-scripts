@@ -43,7 +43,6 @@ Catalog digest: \`${CATALOG_DIGEST}\`
 	}
 	if (AMD_DIGEST) {
 		message += `amd64 digest: \`${AMD_DIGEST}\`
-s390x digest: \`${S390_DIGEST}\`
 `
 	}
 	if (S390_DIGEST) {
