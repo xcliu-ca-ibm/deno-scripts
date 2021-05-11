@@ -12,6 +12,9 @@ let message = Deno.env.get("SLACK_MESSAGE") || "*you can specify message via env
 
 // specific for catalog build notification
 const CATALOG_DIGEST = Deno.env.get("CATALOG_DIGEST")
+const AMD_DIGEST = Deno.env.get("AMD_DIGEST")
+const PPC_DIGEST = Deno.env.get("PPC_DIGEST")
+const S390_DIGEST = Deno.env.get("S390_DIGEST")
 const CATALOG_IMAGE = Deno.env.get("CATALOG_IMAGE")
 const CATALOG_TAG = Deno.env.get("CATALOG_TAG") || "latest"
 const DATESTAMP = Deno.env.get("DATESTAMP")
@@ -32,6 +35,9 @@ if (CATALOG_IMAGE === "ibm-common-service-catalog") {
 		message += `
 
 Catalog digest: \`${CATALOG_DIGEST}\`
+ppc64le digest: \`${PPC_DIGEST}\`
+amd64 digest: \`${AMD_DIGEST}\`
+s390x digest: \`${S390_DIGEST}\`
 `
 	}
 }
