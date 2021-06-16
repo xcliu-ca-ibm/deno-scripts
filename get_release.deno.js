@@ -1,3 +1,4 @@
+Deno.exit()
 const target_default = (squad) => `cicd-${squad}`;
 const squad_case_filter_string = (squad) =>
   squad.replace(/security-/, "").replace(/platform-/, "").replace(
