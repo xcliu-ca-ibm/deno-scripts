@@ -21,7 +21,7 @@ const DATESTAMP = Deno.env.get("DATESTAMP")
 if (CATALOG_IMAGE === "ibm-common-service-catalog") {
 	message = `*A new catalog build for BedRock has been promoted: by Travis <${Deno.env.get("TRAVIS_BUILD_WEB_URL").replace('https://', 'https://travis.ibm.com')}|build ${Deno.env.get("TRAVIS_BUILD_NUMBER")}>*
 - \`hyc-cloud-private-daily-docker-local.artifactory.swg-devops.com/ibmcom/${CATALOG_IMAGE}:${CATALOG_TAG}\``
-	if (DATESTAMP) {
+	if (DATESTAMP && ["cd", "efix", "eus"].find(e => e === CATALOG_TAG)) {
 		message += `
 - \`hyc-cloud-private-daily-docker-local.artifactory.swg-devops.com/ibmcom/${CATALOG_IMAGE}:${DATESTAMP}\`
 `
