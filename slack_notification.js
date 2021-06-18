@@ -16,24 +16,14 @@ const AMD_DIGEST = Deno.env.get("AMD_DIGEST")
 const PPC_DIGEST = Deno.env.get("PPC_DIGEST")
 const S390_DIGEST = Deno.env.get("S390_DIGEST")
 const CATALOG_IMAGE = Deno.env.get("CATALOG_IMAGE")
-const CATALOG_TAG = Deno.env.get("CATALOG_TAG") || "latest"
+const CATALOG_TAG = Deno.env.get("CATALOG_TAG") || "cd"
 const DATESTAMP = Deno.env.get("DATESTAMP")
 if (CATALOG_IMAGE === "ibm-common-service-catalog") {
 	message = `*A new catalog build for BedRock has been promoted: by Travis <${Deno.env.get("TRAVIS_BUILD_WEB_URL").replace('https://', 'https://travis.ibm.com')}|build ${Deno.env.get("TRAVIS_BUILD_NUMBER")}>*
 - \`hyc-cloud-private-daily-docker-local.artifactory.swg-devops.com/ibmcom/${CATALOG_IMAGE}:${CATALOG_TAG}\``
-	if (CATALOG_TAG === "cd" && DATESTAMP) {
+	if (DATESTAMP) {
 		message += `
-- \`hyc-cloud-private-daily-docker-local.artifactory.swg-devops.com/ibmcom/${CATALOG_IMAGE}:cd-${DATESTAMP}\`
-`
-	}
-	if (CATALOG_TAG === "efix" && DATESTAMP) {
-		message += `
-- \`hyc-cloud-private-daily-docker-local.artifactory.swg-devops.com/ibmcom/${CATALOG_IMAGE}:efix-${DATESTAMP}\`
-`
-	}
-	if (CATALOG_TAG === "eus" && DATESTAMP) {
-		message += `
-- \`hyc-cloud-private-daily-docker-local.artifactory.swg-devops.com/ibmcom/${CATALOG_IMAGE}:eus-${DATESTAMP}\`
+- \`hyc-cloud-private-daily-docker-local.artifactory.swg-devops.com/ibmcom/${CATALOG_IMAGE}:${DATESTAMP}\`
 `
 	}
 	if (CATALOG_DIGEST) {
