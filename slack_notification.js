@@ -28,7 +28,6 @@ if (CATALOG_IMAGE === "ibm-common-service-catalog") {
 	}
 	if (CATALOG_DIGEST) {
 		message += `
-
 Catalog digest: \`${CATALOG_DIGEST}\`
 `
 	}
