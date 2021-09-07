@@ -19,7 +19,7 @@ if (SLACK_TO) {
     const PASS = Deno.env.get("SLACK_PASS")
     console.log(PASS)
     if (`${PASS}` === "false") {
-        message = `:x *${SLACK_TO}_bvt failed for ${Deno.env.get("TRAVIS_BRANCH")} by Travis <${(Deno.env.get("TRAVIS_JOB_WEB_URL") || 'hello').replace('https://', 'https://travis.ibm.com')}|job ${Deno.env.get("TRAVIS_JOB_NUMBER")}>*\n`
+        message = `:x: *${SLACK_TO}_bvt failed for ${Deno.env.get("TRAVIS_BRANCH")} by Travis <${(Deno.env.get("TRAVIS_JOB_WEB_URL") || 'hello').replace('https://', 'https://travis.ibm.com')}|job ${Deno.env.get("TRAVIS_JOB_NUMBER")}>*\n`
     } else {
         message = `:white_check_mark: *${SLACK_TO}_bvt passed for ${Deno.env.get("TRAVIS_BRANCH")} by Travis <${(Deno.env.get("TRAVIS_JOB_WEB_URL") || 'hello').replace('https://', 'https://travis.ibm.com')}|job ${Deno.env.get("TRAVIS_JOB_NUMBER")}>*\n`
     }
