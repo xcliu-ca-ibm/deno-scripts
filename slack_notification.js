@@ -13,7 +13,7 @@ let message = Deno.env.get("SLACK_MESSAGE") || "*you can specify message via env
 // specific for bvt notification
 const TO = Deno.env.get("TO")
 if (TO) {
-        message = `*${TO}_bvt failed for ${TRAVIS_BRANCH} by Travis Job <${Deno.env.get("TRAVIS_JOB_WEB_URL").replace('https://', 'https://travis.ibm.com')}|job ${Deno.env.get("TRAVIS_JOB_NUMBER")}>*\n`
+        message = `*${TO}_bvt failed for ${Deno.env.get("TRAVIS_BRANCH")} by Travis Job <${Deno.env.get("TRAVIS_JOB_WEB_URL").replace('https://', 'https://travis.ibm.com')}|job ${Deno.env.get("TRAVIS_JOB_NUMBER")}>*\n`
 }
 // specific for catalog build notification
 const CATALOG_IMAGE = Deno.env.get("CATALOG_IMAGE")
