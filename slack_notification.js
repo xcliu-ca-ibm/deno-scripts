@@ -1,6 +1,6 @@
 import { Slackbot } from "https://raw.githubusercontent.com/cesar-faria/simple_slackbot/master/mod.ts";
 
-const token = Deno.env.get("SLACK_TOKEN")
+const token = Deno.env.get("SLACK_JOB_TOKEN") || Deno.env.get("SLACK_TOKEN")
 if (!token) {
     console.error("!!! did not find slack token, can be set via environment variable SLACK_TOKEN")
     Deno.exit(1)
