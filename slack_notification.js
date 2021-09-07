@@ -7,7 +7,7 @@ if (!token) {
 }
 const slackbot = new Slackbot(token)
 
-const channel = Deno.env.get("SLACK_CHANNEL") || "#icp-cicd-bots"
+let channel = Deno.env.get("SLACK_CHANNEL") || "#icp-cicd-bots"
 let message = Deno.env.get("SLACK_MESSAGE") || "*you can specify message via environment variable SLACK_MESSAGE*"
 
 // specific for bvt notification
