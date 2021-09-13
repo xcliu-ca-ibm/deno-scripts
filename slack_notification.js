@@ -23,8 +23,6 @@ if (SLACK_TO) {
         message = `:white_check_mark: *${SLACK_TO}_bvt passed for ${Deno.env.get("TRAVIS_BRANCH")} by Travis <${(Deno.env.get("TRAVIS_JOB_WEB_URL") || 'hello').replace('https://', 'https://travis.ibm.com')}|job ${Deno.env.get("TRAVIS_JOB_NUMBER")}>*\n`
     }
 }
-console.log(channel)
-console.log(message)
 // specific for catalog build notification
 const CATALOG_IMAGE = Deno.env.get("CATALOG_IMAGE")
 if (CATALOG_IMAGE) {
