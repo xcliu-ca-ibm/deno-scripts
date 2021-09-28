@@ -38,6 +38,7 @@ if (CATALOG_IMAGE) {
         if (DATESTAMP && ["cd", "efix", "eus"].find(e => e === CATALOG_TAG)) {
             message += `
 - \`hyc-cloud-private-daily-docker-local.artifactory.swg-devops.com/ibmcom/${CATALOG_IMAGE}:${DATESTAMP}\`
+ChangeLog: <https://pages.github.ibm.com/IBMPrivateCloud/bedrock-build-contents/${CATALOG_TAG}/html/archive/CS-cd-changelog-${DATESTAMP}.html|CS-${CATALOG_TAG}-changelog-${DATESTAMP}.html>
 `
         }
         if (CATALOG_DIGEST) {
