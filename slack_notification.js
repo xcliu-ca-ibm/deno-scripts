@@ -1,8 +1,16 @@
 const CS_VERSIONS = {
     cd: "3.15.0",
+    "cd-daily": "3.15.0",
+    "cd-quay": "3.15.0",
     eus: "3.6.8",
+    "eus-daily": "3.6.8",
+    "eus-quay": "3.6.8",
     efix: "3.14.2",
-    future: "4.0.0"
+    "efix-daily": "3.14.2",
+    "efix-quay": "3.14.2",
+    future: "4.0.0",
+    "future-daily": "4.0.0",
+    "future-quay": "4.0.0",
 }
 import { Slackbot } from "https://raw.githubusercontent.com/cesar-faria/simple_slackbot/master/mod.ts";
 
