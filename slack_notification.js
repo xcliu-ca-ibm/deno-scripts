@@ -3,7 +3,7 @@ const CS_VERSIONS = {
     "cd-daily": "3.20.0",
     "cd-quay": "3.20.0",
     "cd-icr": "3.20.0",
-    ltsr: "3.19.2",
+    ltsr: "3.19.3",
     "ltsr-daily": "3.19.3",
     "ltsr-quay": "3.19.3",
     "ltsr-icr": "3.19.3",
