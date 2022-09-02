@@ -49,7 +49,6 @@ if (SOT.length > 4) {
       CS_VERSIONS[spec.style + "-quay"] = spec.csRelease
       CS_VERSIONS[spec.style + "-icr"] = spec.csRelease
    })
-   console.log(CS_VERSIONS)
 }
 
 import { Slackbot } from "https://raw.githubusercontent.com/cesar-faria/simple_slackbot/master/mod.ts";
