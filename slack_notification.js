@@ -21,24 +21,30 @@ const CS_VERSIONS = {
     "future-icr": "3.22.0",
 }
 
-let SOT = {}
+let SOT = []
 // try to utilize pipeline-CASE.json to refresh
 try {
-   SOT = JSON.parse(Deno.readTextFileSync(`/workdir/pipeline-CASE.json`).specs)
+   SOT = JSON.parse(Deno.readTextFileSync(`/workdir/pipeline-CASE.json`)).specs
 } catch (e) {
    console.log(`... not running in container`)
    try {
-      SOT = JSON.parse(Deno.readTextFileSync(`./pipeline-CASE.json`).specs)
+      SOT = JSON.parse(Deno.readTextFileSync(`./pipeline-CASE.json`)).specs
    } catch (e) {
       console.log(`... not seen in current directory`)
       try {
          // fetch the online version in github.ibm.com
+         SOT = JSON.parse(Deno.readTextFileSync(`pipeline-CASE.json`)).specs
       } catch (e) {
          console.log(`... error to get online version`)
       }
    }
 }
-console.log(SOT)
+
+if (SOT.length > 3) {
+   SOT.forEach(spec => {
+      console.log(spec)
+   })
+}
 
 import { Slackbot } from "https://raw.githubusercontent.com/cesar-faria/simple_slackbot/master/mod.ts";
 
