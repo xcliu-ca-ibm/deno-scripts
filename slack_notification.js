@@ -20,6 +20,26 @@ const CS_VERSIONS = {
     "future-quay": "3.22.0",
     "future-icr": "3.22.0",
 }
+
+let SOT = {}
+// try to utilize pipeline-CASE.json to refresh
+try {
+   SOT = JSON.parse(Deno.readTextFileSync(`/workdir/pipeline-CASE.json`).specs)
+} catch (e) {
+   console.log(`... not running in container`)
+   try {
+      SOT = JSON.parse(Deno.readTextFileSync(`./pipeline-CASE.json`).specs)
+   } catch (e) {
+      console.log(`... not seen in current directory`)
+      try {
+         // fetch the online version in github.ibm.com
+      } catch (e) {
+         console.log(`... error to get online version`)
+      }
+   }
+}
+console.log(SOT)
+
 import { Slackbot } from "https://raw.githubusercontent.com/cesar-faria/simple_slackbot/master/mod.ts";
 
 const token = Deno.env.get("SLACK_JOB_TOKEN") || Deno.env.get("SLACK_TOKEN")
