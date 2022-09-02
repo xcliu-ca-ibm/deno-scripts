@@ -27,22 +27,22 @@ const CS_VERSIONS = {
 let SOT = []
 // try to utilize pipeline-CASE.json to refresh
 try {
-   SOT = JSON.parse(Deno.readTextFileSync(`/workdir/pipeline-CASE.json`)).specs
+   // fetch the online version in github.ibm.com
+   const headers = {Accept: "application/vnd.github.v3+json", Authorization: `token ${Deno.env.get("GITHUB_TOKEN")}`}
+   const response = await fetch('https://github.ibm.com/api/v3/repos/IBMPrivateCloud/release/contents/pipeline-CASE.json', { headers })
+   const data = await response.json()
+   const textDecoder = new TextDecoder('utf-8')
+   SOT = JSON.parse(textDecoder.decode(base64Decode(data.content))).specs
 } catch (e) {
-   console.log(`... not running in container`)
+   console.log(`... error to get online version`)
    try {
-      SOT = JSON.parse(Deno.readTextFileSync(`./pipeline-CASE.json`)).specs
+      SOT = JSON.parse(Deno.readTextFileSync(`pipeline-CASE.json`)).specs
    } catch (e) {
       console.log(`... not seen in current directory`)
       try {
-         // fetch the online version in github.ibm.com
-         const headers = {Accept: "application/vnd.github.v3+json", Authorization: `token ${Deno.env.get("GITHUB_TOKEN")}`}
-         const response = await fetch('https://github.ibm.com/api/v3/repos/IBMPrivateCloud/release/contents/pipeline-CASE.json', { headers })
-         const data = await response.json()
-         const textDecoder = new TextDecoder('utf-8')
-         SOT = JSON.parse(textDecoder.decode(base64Decode(data.content))).specs
+         SOT = JSON.parse(Deno.readTextFileSync(`/workdir/pipeline-CASE.json`)).specs
       } catch (e) {
-         console.log(`... error to get online version`)
+         console.log(`... not running in container`)
       }
    }
 }
