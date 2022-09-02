@@ -43,6 +43,9 @@ try {
 if (SOT.length > 3) {
    const rr = JSON.parse(JSON.stringify(SOT.find(spec => spec.style === "cd")))
    rr.csRelease = rr.csRelease.split(/\./).map((e,i) => +e + (i === 1 ? 1 : 0)).join(".")
+   rr.version = rr.version.split(/\./).map((e,i) => +e + (i === 1 ? 1 : 0)).join(".")
+   rr.style = "future"
+   rr.gaDate = "0000-00-00"
    SOT.push(rr)
    SOT.forEach(spec => {
       console.log(spec)
