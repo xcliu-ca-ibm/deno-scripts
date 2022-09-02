@@ -1,3 +1,6 @@
+import { decode as base64Decode } from 'https://deno.land/std@0.82.0/encoding/base64.ts'
+import { Slackbot } from "https://raw.githubusercontent.com/cesar-faria/simple_slackbot/master/mod.ts";
+
 const CS_VERSIONS = {
     cd: "3.21.0",
     "cd-daily": "3.21.0",
@@ -33,7 +36,11 @@ try {
       console.log(`... not seen in current directory`)
       try {
          // fetch the online version in github.ibm.com
-         SOT = JSON.parse(Deno.readTextFileSync(`pipeline-CASE.json`)).specs
+         const headers = {Accept: "application/vnd.github.v3+json", Authorization: `token ${Deno.env.get("GITHUB_TOKEN")}`}
+         const response = await fetch('https://github.ibm.com/api/v3/repos/IBMPrivateCloud/release/contents/pipeline-CASE.json', { headers })
+         const data = await response.json()
+         const textDecoder = new TextDecoder('utf-8')
+         SOT = JSON.parse(textDecoder.decode(base64Decode(data.content))).specs
       } catch (e) {
          console.log(`... error to get online version`)
       }
@@ -57,7 +64,6 @@ if (SOT.length > 3) {
    })
 }
 
-import { Slackbot } from "https://raw.githubusercontent.com/cesar-faria/simple_slackbot/master/mod.ts";
 
 const token = Deno.env.get("SLACK_JOB_TOKEN") || Deno.env.get("SLACK_TOKEN")
 if (!token) {
