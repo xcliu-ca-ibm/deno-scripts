@@ -15,10 +15,10 @@ const CS_VERSIONS = {
     "efix-daily": "3.20.2",
     "efix-quay": "3.20.2",
     "efix-icr": "3.20.2",
-    future: "3.22.0",
-    "future-daily": "3.22.0",
-    "future-quay": "3.22.0",
-    "future-icr": "3.22.0",
+    future: "3.99.0",
+    "future-daily": "3.99.0",
+    "future-quay": "3.99.0",
+    "future-icr": "3.99.0",
 }
 
 let SOT = []
@@ -40,10 +40,16 @@ try {
    }
 }
 
-if (SOT.length > 3) {
+if (SOT.length > 4) {
    SOT.forEach(spec => {
       console.log(spec)
+      // update CS_VERSIONS
+      CS_VERSIONS[spec.style] = spec.csRelease
+      CS_VERSIONS[spec.style + "-daily"] = spec.csRelease
+      CS_VERSIONS[spec.style + "-quay"] = spec.csRelease
+      CS_VERSIONS[spec.style + "-icr"] = spec.csRelease
    })
+   console.log(CS_VERSIONS)
 }
 
 import { Slackbot } from "https://raw.githubusercontent.com/cesar-faria/simple_slackbot/master/mod.ts";
