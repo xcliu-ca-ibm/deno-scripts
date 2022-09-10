@@ -55,7 +55,7 @@ if (SOT.length > 3) {
    rr.gaDate = "0000-00-00"
    SOT.push(rr)
    SOT.forEach(spec => {
-      console.log(spec)
+      // console.log(spec)
       // update CS_VERSIONS
       CS_VERSIONS[spec.style] = spec.csRelease
       CS_VERSIONS[spec.style + "-daily"] = spec.csRelease
