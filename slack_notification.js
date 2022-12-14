@@ -81,12 +81,7 @@ if (SLACK_TO) {
     if (SLACK_TO.toLowerCase() === 'sert') {
         channel = '#icp-sert-squad'
     }
-    const PASS = Deno.env.get("SLACK_PASS")
-    if (`${PASS}` === "false") {
-        message = `:x: *${SLACK_TO}_bvt failed for ${Deno.env.get("TRAVIS_BRANCH")} by Travis <${(Deno.env.get("TRAVIS_JOB_WEB_URL") || 'hello').replace('https://', 'https://travis.ibm.com')}|job ${Deno.env.get("TRAVIS_JOB_NUMBER")}>*\n`
-    } else {
-        message = `:white_check_mark: *${SLACK_TO}_bvt passed for ${Deno.env.get("TRAVIS_BRANCH")} by Travis <${(Deno.env.get("TRAVIS_JOB_WEB_URL") || 'hello').replace('https://', 'https://travis.ibm.com')}|job ${Deno.env.get("TRAVIS_JOB_NUMBER")}>*\n`
-    }
+    message = `:x: *${SLACK_TO}_bvt failed for ${Deno.env.get("TRAVIS_BRANCH")} by Travis <${(Deno.env.get("TRAVIS_JOB_WEB_URL") || 'hello').replace('https://', 'https://travis.ibm.com')}|job ${Deno.env.get("TRAVIS_JOB_NUMBER")}>*\n`
 }
 // specific for catalog build notification
 const CATALOG_IMAGE = Deno.env.get("CATALOG_IMAGE")
