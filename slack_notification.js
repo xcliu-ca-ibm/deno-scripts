@@ -95,14 +95,14 @@ if (CATALOG_IMAGE) {
     if (CATALOG_IMAGE === "ibm-common-service-catalog") {
         message = `*CS ${CS_VERSIONS[CATALOG_TAG]} (\`${CATALOG_TAG}\`) catalog build for BedRock has been promoted: by Travis <${Deno.env.get("TRAVIS_BUILD_WEB_URL", "test").replace('https://', 'https://travis.ibm.com')}|build ${Deno.env.get("TRAVIS_BUILD_NUMBER")}>*
 - \`docker-na-public.artifactory.swg-devops.com/hyc-cloud-private-daily-docker-local/ibmcom/${CATALOG_IMAGE}:${CATALOG_TAG}\``
-        if (CATALOG_TAG !== "ltsr") {
+        if (CATALOG_TAG !== "ltsr" && CATALOG_TAG !== "future") {
             message += `
 - \`hyc-cloud-private-daily-docker-local.artifactory.swg-devops.com/ibmcom/${CATALOG_IMAGE}:${CATALOG_TAG}\``
         }
         if (DATESTAMP && ["cd", "ltsr", "efix", "eus", "future"].find(e => e === CATALOG_TAG)) {
             message += `
 - \`docker-na-public.artifactory.swg-devops.com/hyc-cloud-private-daily-docker-local/ibmcom/${CATALOG_IMAGE}:${DATESTAMP}\``
-            if (CATALOG_TAG !== "ltsr") {
+            if (CATALOG_TAG !== "ltsr" && CATALOG_TAG !== "future") {
                 message += `
 - \`hyc-cloud-private-daily-docker-local.artifactory.swg-devops.com/ibmcom/${CATALOG_IMAGE}:${DATESTAMP}\``
             }
