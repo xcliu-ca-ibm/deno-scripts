@@ -79,7 +79,7 @@ let message = Deno.env.get("SLACK_MESSAGE") || "*you can specify message via env
 const SLACK_TO = Deno.env.get("SLACK_TO") || "cicd"
 if (SLACK_TO) {
     if (SLACK_TO.toLowerCase() === 'sert') {
-        channel = '#icp-sert-squad'
+        channel = '#project-k-automation-result'
     }
     message = `:x: *${SLACK_TO}_bvt failed for ${Deno.env.get("TRAVIS_BRANCH")} by Travis <${(Deno.env.get("TRAVIS_JOB_WEB_URL") || 'hello').replace('https://', 'https://travis.ibm.com')}|job ${Deno.env.get("TRAVIS_JOB_NUMBER")}>*\n`
 }
