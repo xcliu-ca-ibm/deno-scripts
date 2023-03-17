@@ -102,6 +102,12 @@ if (CATALOG_IMAGE) {
         if (DATESTAMP && ["cd", "ltsr", "323", "efix", "eus", "future"].find(e => e === CATALOG_TAG)) {
             message += `
 - \`docker-na-public.artifactory.swg-devops.com/hyc-cloud-private-daily-docker-local/ibmcom/${CATALOG_IMAGE}:${DATESTAMP}\``
+            if (["cd", "future"].find(e => e === CATALOG_TAG)) {
+            message += `
+Singletons:
+- \`docker-na-public.artifactory.swg-devops.com/hyc-cloud-private-daily-docker-local/ibmcom/ibm-licensing-catalog:${CATALOG_TAG}\`
+- \`docker-na-public.artifactory.swg-devops.com/hyc-cloud-private-daily-docker-local/ibmcom/ibm-cert-manager-operator-catalog:${CATALOG_TAG}\``
+            }
             message += `
 ChangeLog: <https://pages.github.ibm.com/IBMPrivateCloud/bedrock-build-contents/${CATALOG_TAG}/html/archive/CS-${CATALOG_TAG}-changelog${DATESTAMP.replace(CATALOG_TAG,"")}.html|CS-${CATALOG_TAG}-changelog${DATESTAMP.replace(CATALOG_TAG,"")}.html>
 `
