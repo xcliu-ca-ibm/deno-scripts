@@ -96,6 +96,7 @@ if (CATALOG_IMAGE) {
     const S390_DIGEST = Deno.env.get("S390_DIGEST")
     const CATALOG_TAG = Deno.env.get("CATALOG_TAG") || "cd"
     const DATESTAMP = Deno.env.get("DATESTAMP")
+    const ZEN_BUILD = Deno.env.get("ZEN_BUILD")
     if (CATALOG_IMAGE === "ibm-common-service-catalog") {
         message = `*CS ${CS_VERSIONS[CATALOG_TAG]} (\`${CATALOG_TAG}\`) catalog build for BedRock has been promoted: by Travis <${Deno.env.get("TRAVIS_BUILD_WEB_URL", "test").replace('https://', 'https://travis.ibm.com')}|build ${Deno.env.get("TRAVIS_BUILD_NUMBER")}>*
 - \`docker-na-public.artifactory.swg-devops.com/hyc-cloud-private-daily-docker-local/ibmcom/${CATALOG_IMAGE}:${CATALOG_TAG}\``
@@ -130,6 +131,9 @@ Catalog digest: \`${CATALOG_DIGEST}\`
 `
         }
     }
+    if (ZEN_BUILD) {
+        message += `ZEN: \`${ZEN_BUILD}\`
+`
 }
 
 await slackbot.sendMessage(`${channel}`, `${message}`);
