@@ -134,6 +134,7 @@ Catalog digest: \`${CATALOG_DIGEST}\`
     if (ZEN_BUILD) {
         message += `ZEN: \`${ZEN_BUILD}\`
 `
+    }
 }
 
 await slackbot.sendMessage(`${channel}`, `${message}`);
