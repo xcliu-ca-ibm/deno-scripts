@@ -52,12 +52,6 @@ try {
 }
 
 if (SOT.length > 3) {
-   // const rr = JSON.parse(JSON.stringify(SOT.find(spec => spec.style === "cd")))
-   // rr.csRelease = rr.csRelease.split(/\./).map((e,i) => +e + (i === 1 ? 1 : 0)).join(".")
-   // rr.version = rr.version.split(/\./).map((e,i) => +e + (i === 1 ? 1 : 0)).join(".")
-   // rr.style = "future"
-   // rr.gaDate = "0000-00-00"
-   // SOT.push(rr)
    SOT.forEach(spec => {
       // console.log(spec)
       // update CS_VERSIONS
@@ -85,7 +79,7 @@ if (SLACK_TO) {
     if (SLACK_TO.toLowerCase() === 'sert') {
         channel = '#project-k-automation-result'
     }
-    message = `:x: *${SLACK_TO}_bvt failed for ${Deno.env.get("TRAVIS_BRANCH")} by Travis <${(Deno.env.get("TRAVIS_JOB_WEB_URL") || 'hello').replace(/https.*ibm.com/, 'https://v3.travis.ibm.com')}|job ${Deno.env.get("TRAVIS_JOB_NUMBER")}>*\n`
+    message = `:x: *${SLACK_TO}_bvt failed for ${Deno.env.get("TRAVIS_BRANCH")} by Travis <${(Deno.env.get("TRAVIS_JOB_WEB_URL") || 'hello')}|job ${Deno.env.get("TRAVIS_JOB_NUMBER")}>*\n`
 }
 // specific for catalog build notification
 const CATALOG_IMAGE = Deno.env.get("CATALOG_IMAGE")
@@ -98,7 +92,7 @@ if (CATALOG_IMAGE) {
     const DATESTAMP = Deno.env.get("DATESTAMP")
     const ZEN_BUILD = Deno.env.get("ZEN_BUILD")
     if (CATALOG_IMAGE === "ibm-common-service-catalog") {
-        message = `*CS ${CS_VERSIONS[CATALOG_TAG]} (\`${CATALOG_TAG}\`) catalog build for BedRock has been promoted: by Travis <${Deno.env.get("TRAVIS_BUILD_WEB_URL", "test").replace('https://', 'https://travis.ibm.com')}|build ${Deno.env.get("TRAVIS_BUILD_NUMBER")}>*
+        message = `*CS ${CS_VERSIONS[CATALOG_TAG]} (\`${CATALOG_TAG}\`) catalog build for BedRock has been promoted: by Travis <${Deno.env.get("TRAVIS_BUILD_WEB_URL", "test")}|build ${Deno.env.get("TRAVIS_BUILD_NUMBER")}>*
 - \`docker-na-public.artifactory.swg-devops.com/hyc-cloud-private-daily-docker-local/ibmcom/${CATALOG_IMAGE}:${CATALOG_TAG}\``
         if (DATESTAMP && ["cd", "ltsr", "323", "efix", "eus", "future"].find(e => e === CATALOG_TAG)) {
             message += `
