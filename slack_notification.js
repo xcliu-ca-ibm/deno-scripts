@@ -85,6 +85,7 @@ if (SLACK_TO) {
 const CATALOG_IMAGE = Deno.env.get("CATALOG_IMAGE")
 if (CATALOG_IMAGE) {
     const CATALOG_DIGEST = Deno.env.get("CATALOG_DIGEST")
+    const ARM_DIGEST = Deno.env.get("ARM_DIGEST") || "nodigest"
     const AMD_DIGEST = Deno.env.get("AMD_DIGEST")
     const PPC_DIGEST = Deno.env.get("PPC_DIGEST")
     const S390_DIGEST = Deno.env.get("S390_DIGEST")
@@ -123,6 +124,10 @@ Catalog digest: \`${CATALOG_DIGEST}\`
         }
         if (S390_DIGEST) {
             message += `s390x digest: \`${S390_DIGEST}\`
+`
+        }
+        if (ARM_DIGEST) {
+            message += `arm64 digest: \`${ARM_DIGEST}\`
 `
         }
     }
