@@ -127,8 +127,7 @@ Catalog digest: \`${CATALOG_DIGEST}\`
 `
         }
         if (ARM_DIGEST) {
-            message += `arm64 digest: \`${ARM_DIGEST}\`
-`
+            console.log(ARM_DIGEST)
         }
     }
     if (ZEN_BUILD) {
