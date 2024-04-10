@@ -103,6 +103,7 @@ if (CATALOG_IMAGE) {
 Singletons:
 - \`docker-na-public.artifactory.swg-devops.com/hyc-cloud-private-daily-docker-local/ibmcom/ibm-licensing-catalog:${CATALOG_TAG}\`
 - \`docker-na-public.artifactory.swg-devops.com/hyc-cloud-private-daily-docker-local/ibmcom/ibm-license-service-reporter-operator-catalog:${CATALOG_TAG}\`
+- \`docker-na-public.artifactory.swg-devops.com/hyc-cloud-private-daily-docker-local/ibmcom/ibm-license-service-scanner-operator-catalog:${CATALOG_TAG}\`
 - \`docker-na-public.artifactory.swg-devops.com/hyc-cloud-private-daily-docker-local/ibmcom/ibm-cert-manager-operator-catalog:${CATALOG_TAG}\`
 - \`docker-na-public.artifactory.swg-devops.com/hyc-cloud-private-daily-docker-local/ibmcom/ibm-cs-flink-operator-catalog:${CATALOG_TAG}\`
 - \`docker-na-public.artifactory.swg-devops.com/hyc-cloud-private-daily-docker-local/ibmcom/ibm-cs-elastic-operator-catalog:${CATALOG_TAG}\``
